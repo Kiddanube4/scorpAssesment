@@ -21,12 +21,17 @@ class ViewController: UIViewController {
     
     var personData = [Person]()
     let refreshControl = UIRefreshControl()
+    lazy var containerView: UIView = {
+        
+        return UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
         homeviewModel.fetchData(next: nil)
-       homeviewModel.registerTableViewCells(name: "PeopleCell", tableview: tableViewPerson, reuseID: "PeopleCell")
+        homeviewModel.registerTableViewCells(name: "PeopleCell", tableview: tableViewPerson, reuseID: "PeopleCell")
         
     
         
@@ -39,7 +44,13 @@ class ViewController: UIViewController {
     }
     
     @objc func reloadData() {
+        personData = []
+
+        self.view.addSubview(containerView)
+        
+        VCUtils().showActivityIndicator(uiView: containerView)
         homeviewModel.fetchData(next: "10")
+        
     }
 }
 
@@ -63,7 +74,10 @@ extension ViewController:HomeScreenViewModelDelegate {
     func fetch(_ didSucceed: [Person]) {
         if didSucceed.count != 0 {
             //handle data
-            personData = didSucceed
+            containerView.removeFromSuperview()
+            for person in didSucceed {
+                personData.append(person)
+            }
             refreshControl.endRefreshing()
             tableViewPerson.reloadData()
             return
@@ -77,6 +91,9 @@ extension ViewController:HomeScreenViewModelDelegate {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == personData.count - 1 {
+            
+            self.view.addSubview(containerView)
+            VCUtils().showActivityIndicator(uiView: containerView)
             homeviewModel.fetchData(next: "10")
         }
        
