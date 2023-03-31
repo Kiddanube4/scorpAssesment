@@ -10,8 +10,6 @@ import UIKit
 
 class HomeScreenViewModel {
     var homeVMDelegate: HomeScreenViewModelDelegate?
-    var currentPage = 1
-    var totalPages = 1
     
      func fetchData(next:String?) {
          DataSource.fetch(next: next) {  response, error in

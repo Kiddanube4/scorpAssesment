@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         homeViewModelData.homeVMDelegate = self
         return homeViewModelData
     }()
+    
     var personData = [Person]()
     let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
@@ -74,7 +75,12 @@ extension ViewController:HomeScreenViewModelDelegate {
 }
 
 extension ViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == personData.count - 1 {
+            homeviewModel.fetchData(next: "10")
+        }
+       
+    }
 }
 
 extension ViewController: UITableViewDataSource {
@@ -85,7 +91,7 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleCell") as? PeopleCell {
             
-            cell.viewModelData = homeviewModel.getCellData(at: indexPath, from: personData)
+             cell.viewModelData = homeviewModel.getCellData(at: indexPath, from: personData)
               return cell
           }
           
