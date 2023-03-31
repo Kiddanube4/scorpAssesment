@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class HomeScreenViewModel {
     var homeVMDelegate: HomeScreenViewModelDelegate?
@@ -24,6 +25,18 @@ class HomeScreenViewModel {
             }
         }
     }
+    
+    func registerTableViewCells(name:String, tableview: UITableView, reuseID: String) {
+        let textFieldCell = UINib(nibName: name,
+                                  bundle: nil)
+        tableview.register(textFieldCell,
+                                forCellReuseIdentifier: reuseID)
+    }
+    
+     func getCellData<T>(at indexPath: IndexPath, from data: [T?]) -> T? {
+        return data.isEmpty == true ? nil : data[indexPath.row]
+    }
+
 }
 
 

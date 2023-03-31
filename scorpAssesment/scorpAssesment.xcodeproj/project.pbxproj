@@ -16,8 +16,9 @@
 		9DDE02F029D5BA6700E26F81 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE02EF29D5BA6700E26F81 /* DataSource.swift */; };
 		9DDE02F529D6CA3700E26F81 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE02F429D6CA3700E26F81 /* HomeScreenViewModel.swift */; };
 		9DDE02F829D6CB4500E26F81 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE02F729D6CB4500E26F81 /* Protocols.swift */; };
-		9DDE02FE29D6DCAE00E26F81 /* PeopleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DDE02FD29D6DCAE00E26F81 /* PeopleTableViewCell.xib */; };
+		9DDE02FE29D6DCAE00E26F81 /* PeopleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DDE02FD29D6DCAE00E26F81 /* PeopleCell.xib */; };
 		9DDE030229D6DE6100E26F81 /* PeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE030129D6DE6100E26F81 /* PeopleCell.swift */; };
+		9DDE030729D6F45C00E26F81 /* VCUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE030629D6F45C00E26F81 /* VCUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +33,9 @@
 		9DDE02EF29D5BA6700E26F81 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		9DDE02F429D6CA3700E26F81 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		9DDE02F729D6CB4500E26F81 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		9DDE02FD29D6DCAE00E26F81 /* PeopleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeopleTableViewCell.xib; sourceTree = "<group>"; };
+		9DDE02FD29D6DCAE00E26F81 /* PeopleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeopleCell.xib; sourceTree = "<group>"; };
 		9DDE030129D6DE6100E26F81 /* PeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCell.swift; sourceTree = "<group>"; };
+		9DDE030629D6F45C00E26F81 /* VCUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		9DDE02D929D5B91500E26F81 /* scorpAssesment */ = {
 			isa = PBXGroup;
 			children = (
+				9DDE030529D6F44C00E26F81 /* Helper */,
 				9DDE02FA29D6D97700E26F81 /* Base */,
 				9DDE02F929D6D96500E26F81 /* Module */,
 				9DDE02E329D5B91700E26F81 /* Assets.xcassets */,
@@ -148,10 +151,18 @@
 		9DDE02FC29D6DC7300E26F81 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				9DDE02FD29D6DCAE00E26F81 /* PeopleTableViewCell.xib */,
+				9DDE02FD29D6DCAE00E26F81 /* PeopleCell.xib */,
 				9DDE030129D6DE6100E26F81 /* PeopleCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		9DDE030529D6F44C00E26F81 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				9DDE030629D6F45C00E26F81 /* VCUtils.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DDE02FE29D6DCAE00E26F81 /* PeopleTableViewCell.xib in Resources */,
+				9DDE02FE29D6DCAE00E26F81 /* PeopleCell.xib in Resources */,
 				9DDE02E729D5B91700E26F81 /* LaunchScreen.storyboard in Resources */,
 				9DDE02E429D5B91700E26F81 /* Assets.xcassets in Resources */,
 				9DDE02E229D5B91500E26F81 /* Main.storyboard in Resources */,
@@ -228,6 +239,7 @@
 			files = (
 				9DDE02DF29D5B91500E26F81 /* ViewController.swift in Sources */,
 				9DDE02DB29D5B91500E26F81 /* AppDelegate.swift in Sources */,
+				9DDE030729D6F45C00E26F81 /* VCUtils.swift in Sources */,
 				9DDE030229D6DE6100E26F81 /* PeopleCell.swift in Sources */,
 				9DDE02F029D5BA6700E26F81 /* DataSource.swift in Sources */,
 				9DDE02F829D6CB4500E26F81 /* Protocols.swift in Sources */,

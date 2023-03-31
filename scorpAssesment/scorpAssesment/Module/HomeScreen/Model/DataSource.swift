@@ -5,7 +5,11 @@
 //  Created by Ovunc Dalkiran on 01.01.2021.
 
 import Foundation
-
+enum ErrorDescription: String {
+    case internalServerError = "Internal Server Error"
+    case parameterError = "Parameter error"
+    
+}
 // Model class that represents a person with an `id` and a `fullName`
 public class Person {
     let id: Int
@@ -30,9 +34,9 @@ public class FetchResponse {
 
 
 public class FetchError {
-    let errorDescription: String
+    let errorDescription: ErrorDescription
     
-    init(description: String) {
+    init(description: ErrorDescription) {
         self.errorDescription = description
     }
 }
@@ -94,7 +98,7 @@ public class DataSource {
         
         if isError {
             waitTime = RandomUtils.generateRandomDouble(inClosedRange: Constants.lowWaitTimeRange)
-            error = FetchError(description: "Internal Server Error")
+            error = FetchError(description: .internalServerError)
         }
         else {
             waitTime = RandomUtils.generateRandomDouble(inClosedRange: Constants.highWaitTimeRange)
@@ -102,7 +106,7 @@ public class DataSource {
             let peopleCount = people.count
 
             if let next = next, (Int(next) == nil || Int(next)! < 0) {
-                error = FetchError(description: "Parameter error")
+                error = FetchError(description: .parameterError)
             }
             else {
                 let endIndex: Int = min(peopleCount, fetchCount + (next == nil ? 0 : (Int(next!) ?? 0)))

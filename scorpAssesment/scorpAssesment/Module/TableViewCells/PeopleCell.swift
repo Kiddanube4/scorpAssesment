@@ -19,7 +19,6 @@ class PeopleCell: UITableViewCell {
     
     var viewModelData: Person? {
         didSet {
-            print("current vm data : \(viewModelData)")
             if let person = viewModelData {
                 lblId.text = String(person.id)
                 lblName.text = person.fullName
@@ -27,15 +26,6 @@ class PeopleCell: UITableViewCell {
             }else {
                 lblName.text = "Not found"
                 lblId.text = "0"
-            }
-        }
-    }
-    
-    var cellErrorModel: FetchError? {
-        didSet {
-            if let error = cellErrorModel {
-                lblName.text = error.errorDescription
-                lblId.isHidden = true
             }
         }
     }
