@@ -21,10 +21,7 @@ class ViewController: UIViewController {
     
     var personData = [Person]()
     let refreshControl = UIRefreshControl()
-    lazy var containerView: UIView = {
-        
-        return UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-    }()
+    var containerView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +42,8 @@ class ViewController: UIViewController {
     
     @objc func reloadData() {
         personData = []
-
+        
+        containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         self.view.addSubview(containerView)
         
         VCUtils().showActivityIndicator(uiView: containerView)
@@ -92,7 +90,8 @@ extension ViewController:HomeScreenViewModelDelegate {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == personData.count - 1 {
+        if indexPath.row == personData.count - 1  {
+           containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
             self.view.addSubview(containerView)
             VCUtils().showActivityIndicator(uiView: containerView)
             homeviewModel.fetchData(next: "10")
