@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PeopleCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PeopleCell" rowHeight="69" id="9b9-yK-OVj" customClass="PeopleCell" customModule="scorpAssesment" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="340" height="69"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9b9-yK-OVj" id="Rpu-z0-6ZB">
+                <rect key="frame" x="0.0" y="0.0" width="340" height="69"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lblName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iG-7v-uVc">
+                        <rect key="frame" x="19.999999999999996" y="24" width="62.666666666666657" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lblID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggd-rz-N4k">
+                        <rect key="frame" x="286" y="24" width="34" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3iG-7v-uVc" firstAttribute="leading" secondItem="Rpu-z0-6ZB" secondAttribute="leading" constant="20" symbolic="YES" id="8n7-Wo-OCc"/>
+                    <constraint firstItem="3iG-7v-uVc" firstAttribute="centerY" secondItem="ggd-rz-N4k" secondAttribute="centerY" id="9hb-wA-nyu"/>
+                    <constraint firstAttribute="bottom" secondItem="3iG-7v-uVc" secondAttribute="bottom" constant="24" id="b5d-XI-YeL"/>
+                    <constraint firstItem="3iG-7v-uVc" firstAttribute="top" secondItem="Rpu-z0-6ZB" secondAttribute="top" constant="24" id="lbN-Wj-ZAk"/>
+                    <constraint firstItem="ggd-rz-N4k" firstAttribute="top" secondItem="Rpu-z0-6ZB" secondAttribute="top" constant="24" id="nTn-Lk-mr5"/>
+                    <constraint firstItem="ggd-rz-N4k" firstAttribute="trailing" secondItem="Rpu-z0-6ZB" secondAttribute="trailingMargin" id="nc7-3G-JLt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblId" destination="ggd-rz-N4k" id="b7Q-7H-p3w"/>
+                <outlet property="lblName" destination="3iG-7v-uVc" id="jga-rq-YzI"/>
+            </connections>
+            <point key="canvasLocation" x="-24.427480916030532" y="36.971830985915496"/>
+        </tableViewCell>
+    </objects>
+</document>
