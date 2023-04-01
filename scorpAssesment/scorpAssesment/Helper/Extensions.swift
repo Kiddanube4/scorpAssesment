@@ -8,16 +8,15 @@
 import Foundation
 
 
-extension Array where Element: Hashable {
-    func removingDuplicates() -> [Element] {
-        var addedDict = [Element: Bool]()
-
-        return filter {
-            addedDict.updateValue(true, forKey: $0) == nil
+extension Array {
+    func unique<T: Hashable>(by keyPath: KeyPath<Element, T>) -> [Element] {
+        var set = Set<T>()
+        return self.reduce(into: [Element]()) { result, value in
+            guard !set.contains(value[keyPath: keyPath]) else {
+                return
+            }
+            set.insert(value[keyPath: keyPath])
+            result.append(value)
         }
-    }
-
-    mutating func removeDuplicates() {
-        self = self.removingDuplicates()
     }
 }

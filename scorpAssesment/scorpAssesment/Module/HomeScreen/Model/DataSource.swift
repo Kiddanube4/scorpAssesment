@@ -11,7 +11,13 @@ enum ErrorDescription: String {
     
 }
 // Model class that represents a person with an `id` and a `fullName`
-public class Person {
+public class Person: Hashable {
+    public static func == (lhs: Person, rhs: Person) -> Bool {
+        return false
+    }
+    public func hash(into hasher: inout Hasher) {
+        
+    }
     let id: Int
     let fullName: String
     

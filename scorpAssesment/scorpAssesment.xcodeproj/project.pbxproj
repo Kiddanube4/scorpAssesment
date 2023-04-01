@@ -19,6 +19,7 @@
 		9DDE02FE29D6DCAE00E26F81 /* PeopleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DDE02FD29D6DCAE00E26F81 /* PeopleCell.xib */; };
 		9DDE030229D6DE6100E26F81 /* PeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE030129D6DE6100E26F81 /* PeopleCell.swift */; };
 		9DDE030729D6F45C00E26F81 /* VCUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE030629D6F45C00E26F81 /* VCUtils.swift */; };
+		9DDE030D29D735F000E26F81 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDE030C29D735F000E26F81 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		9DDE02FD29D6DCAE00E26F81 /* PeopleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeopleCell.xib; sourceTree = "<group>"; };
 		9DDE030129D6DE6100E26F81 /* PeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCell.swift; sourceTree = "<group>"; };
 		9DDE030629D6F45C00E26F81 /* VCUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCUtils.swift; sourceTree = "<group>"; };
+		9DDE030C29D735F000E26F81 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 		9DDE030529D6F44C00E26F81 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				9DDE030C29D735F000E26F81 /* Extensions.swift */,
 				9DDE030629D6F45C00E26F81 /* VCUtils.swift */,
 			);
 			path = Helper;
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DDE02DF29D5B91500E26F81 /* ViewController.swift in Sources */,
+				9DDE030D29D735F000E26F81 /* Extensions.swift in Sources */,
 				9DDE02DB29D5B91500E26F81 /* AppDelegate.swift in Sources */,
 				9DDE030729D6F45C00E26F81 /* VCUtils.swift in Sources */,
 				9DDE030229D6DE6100E26F81 /* PeopleCell.swift in Sources */,

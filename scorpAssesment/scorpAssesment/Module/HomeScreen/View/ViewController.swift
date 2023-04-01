@@ -58,6 +58,7 @@ extension ViewController:HomeScreenViewModelDelegate {
     func fetch(_ didFail: FetchError) {
         refreshControl.endRefreshing()
         tableViewPerson.reloadData()
+        containerView.removeFromSuperview()
         switch didFail.errorDescription {
         case .parameterError:
             VCUtils.showAlertAction(title: "Hata !", message: "Hatalı bir parametre gitdiniz lütfen yeniden deneyin. ", viewController: self) {
@@ -74,12 +75,13 @@ extension ViewController:HomeScreenViewModelDelegate {
     func fetch(_ didSucceed: [Person]) {
         if didSucceed.count != 0 {
             //handle data
-            containerView.removeFromSuperview()
             for person in didSucceed {
                 personData.append(person)
             }
+            personData = personData.unique(by: \.id)
             refreshControl.endRefreshing()
             tableViewPerson.reloadData()
+            containerView.removeFromSuperview()
             return
         }
         VCUtils.showAlertAction(title: "Hata !", message: "Sunucu hatası lütfen yeniden deneyin. ", viewController: self) {
@@ -91,7 +93,6 @@ extension ViewController:HomeScreenViewModelDelegate {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == personData.count - 1 {
-            
             self.view.addSubview(containerView)
             VCUtils().showActivityIndicator(uiView: containerView)
             homeviewModel.fetchData(next: "10")
