@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     
     var personData = [Person]()
     var uniquePerson = [Person]()
+    var uniquePersonCount = 0
     let refreshControl = UIRefreshControl()
     var containerView = UIView()
     
@@ -43,6 +44,7 @@ class ViewController: UIViewController {
     
     @objc func reloadData() {
         personData = []
+        uniquePerson = []
         
         containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         self.view.addSubview(containerView)
@@ -74,6 +76,7 @@ extension ViewController:HomeScreenViewModelDelegate {
     func fetch(_ didSucceed: [Person]) {
         if didSucceed.count != 0 {
             //handle data
+            uniquePersonCount = uniquePerson.count
             for person in didSucceed {
                 if !uniquePerson.contains(where: { $0.id == person.id }) {
                     uniquePerson.append(person)
@@ -83,17 +86,19 @@ extension ViewController:HomeScreenViewModelDelegate {
             refreshControl.endRefreshing()
             tableViewPerson.reloadData()
             containerView.removeFromSuperview()
-            return
+            
+        }else {
+            VCUtils.showAlertAction(title: "Hata !", message: "Sunucu hatası lütfen yeniden deneyin. ", viewController: self) {
+                self.homeviewModel.fetchData(next: "10")
         }
-        VCUtils.showAlertAction(title: "Hata !", message: "Sunucu hatası lütfen yeniden deneyin. ", viewController: self) {
-            self.homeviewModel.fetchData(next: "10")
+       
         }
     }
 }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == personData.count - 1  {
+        if indexPath.row == uniquePerson.count - 1 && uniquePersonCount < uniquePerson.count  {
            containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
             self.view.addSubview(containerView)
             VCUtils().showActivityIndicator(uiView: containerView)
