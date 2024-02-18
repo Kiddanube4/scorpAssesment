@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         return homeViewModelData
     }()
     
-    var personData = [Person]()
+   
     var uniquePerson = [Person]()
     var uniquePersonCount = 0
     let refreshControl = UIRefreshControl()
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
-        homeviewModel.fetchData(next: nil)
+        homeviewModel.fetchData(next: "10")
         homeviewModel.registerTableViewCells(name: "PeopleCell", tableview: tableViewPerson, reuseID: "PeopleCell")
         
     
@@ -43,7 +43,6 @@ class ViewController: UIViewController {
     }
     
     @objc func reloadData() {
-        personData = []
         uniquePerson = []
         
         containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
@@ -98,11 +97,13 @@ extension ViewController:HomeScreenViewModelDelegate {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == uniquePerson.count - 1 && uniquePersonCount < uniquePerson.count  {
-           containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-            self.view.addSubview(containerView)
-            VCUtils().showActivityIndicator(uiView: containerView)
-            homeviewModel.fetchData(next: "10")
+        if indexPath.row == uniquePerson.count - 1 {
+            if uniquePersonCount < uniquePerson.count {
+                containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+                 self.view.addSubview(containerView)
+                 VCUtils().showActivityIndicator(uiView: containerView)
+                 homeviewModel.fetchData(next: "20")
+            }
         }
        
     }
