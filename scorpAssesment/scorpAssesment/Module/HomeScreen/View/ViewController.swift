@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     }()
     
     var personData = [Person]()
+    var uniquePerson = [Person]()
     let refreshControl = UIRefreshControl()
     var containerView = UIView()
     
@@ -74,9 +75,11 @@ extension ViewController:HomeScreenViewModelDelegate {
         if didSucceed.count != 0 {
             //handle data
             for person in didSucceed {
-                personData.append(person)
+                if !uniquePerson.contains(where: { $0.id == person.id }) {
+                    uniquePerson.append(person)
+                }
             }
-            personData = personData.unique(by: \.id)
+            
             refreshControl.endRefreshing()
             tableViewPerson.reloadData()
             containerView.removeFromSuperview()
@@ -102,13 +105,13 @@ extension ViewController: UITableViewDelegate {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return personData.count
+        return uniquePerson.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleCell") as? PeopleCell {
             
-             cell.viewModelData = homeviewModel.getCellData(at: indexPath, from: personData)
+             cell.viewModelData = homeviewModel.getCellData(at: indexPath, from: uniquePerson)
               return cell
           }
           
